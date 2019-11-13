@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/main_drawar.dart';
 import './favorites_screen.dart';
 import './categories_screen.dart';
 
@@ -9,8 +10,8 @@ class TabsScreen extends StatefulWidget {
 
 class _TabsScreenState extends State<TabsScreen> {
   final List<Map<String, Object>> _pages = [
-    {'page':CategoriesScreen() , 'title':'Categorories' },
-    {'page':FavoritesScreen(), 'title':'favorite'},
+    {'page': CategoriesScreen(), 'title': 'Categorories'},
+    {'page': FavoritesScreen(), 'title': 'favorite'},
   ];
   int _selectedPAgeIndex = 0;
   void _selectPage(int index) {
@@ -24,6 +25,9 @@ class _TabsScreenState extends State<TabsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_pages[_selectedPAgeIndex]['title']),
+      ),
+      drawer: Drawer(
+        child: MainDrawar(),
       ),
       body: _pages[_selectedPAgeIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
