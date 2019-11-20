@@ -23,6 +23,7 @@ class _MyAppState extends State<MyApp> {
   };
 
   List<Meal> _avaiableMeals = DUMMY_MEALS;
+  List<Meal> _favoriteMeals = [];
 
   void _setFilters(Map<String, bool> filterData) {
     setState(() {
@@ -45,6 +46,8 @@ class _MyAppState extends State<MyApp> {
       }).toList();
     });
   }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +73,7 @@ class _MyAppState extends State<MyApp> {
       //home: CategoriesScreen(),
       initialRoute: '/', //defalt
       routes: {
-        '/': (ctx) => TabsScreen(),
+        '/': (ctx) => TabsScreen(_favoriteMeals),
         CategoryMealsScreen.routeName: (ctx) =>
             CategoryMealsScreen(_avaiableMeals),
         MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
